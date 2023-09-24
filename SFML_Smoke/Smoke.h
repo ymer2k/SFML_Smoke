@@ -30,8 +30,8 @@ public:
 	bool isExpired();
 
 	sf::Color getColor();
-	sf::CircleShape getShape();
-	sf::CircleShape& getShapeReference();
+	sf::Sprite getShape();
+	sf::Sprite& getShapeReference();
 
 	float getAlpha();
 	void setAlpha(float alpha);
@@ -49,7 +49,7 @@ private:
 	sf::Vector2f m_scaleRate;
 	float m_mass;
 	float m_radius;
-	sf::CircleShape m_shape;
+	sf::Sprite m_shape;
 	sf::Time m_lifespanSeconds;
 	sf::Clock m_creationTime;
 	float m_alpha;

@@ -40,6 +40,7 @@ Game::Game():
         std::cout << "TEXTURE LOAD ERROR" << std::endl;
     }
 
+
 }
 
 void Game::update(sf::Time dt, sf::RenderWindow& window) //Update objects position, rotation etc
@@ -74,7 +75,7 @@ void Game::update(sf::Time dt, sf::RenderWindow& window) //Update objects positi
         //Change scale #2
         sf::Vector2f scale = smokePointer->getScale();
         sf::Vector2f scaleRate = smokePointer->getScaleRate();
-        float scaleRateChange = 1.01f;
+        float scaleRateChange = 1.0f; //1.01f;
         smokePointer->setScaleRate(scaleRate * scaleRateChange);
         smokePointer->setScale(scale + scaleRate * scaleRateChange*dt.asSeconds());
 
@@ -140,13 +141,16 @@ void Game::drawGame(sf::RenderWindow& window)
 
 
 
-    //draw line
-    //sf::Vertex line[2];
-    //line[0].color = sf::Color::White;
-    //line[1].color = sf::Color::White;
-    //line[0].position = sf::Vector2f(0, window.getSize().y - 100.0f);
-    //line[1].position = sf::Vector2f(window.getSize().x, window.getSize().y - 100.0f);
-    //window.draw(line, 2, sf::Lines);
+    //draw sprite
+    sf::Sprite testSprite;
+    testSprite.setPosition(sf::Vector2f{ 200.0f, 200 });
+    testSprite.setTexture(m_smokeTexture);
+    sf::Vector2u textureSize = m_smokeTexture.getSize();
+    testSprite.setOrigin(textureSize.x/2, textureSize.y/2);
+    testSprite.setRotation(90);
+
+    //window.draw(testSprite);
+
 
     // Display everything that has been drawn
     window.display();
@@ -219,7 +223,9 @@ void Game::interact(sf::RenderWindow& window)
 
         //Create smoke object and put in vector
         Smoke* smokeObject = new Smoke(m_convexTriangle.getPosition(), sf::Vector2f(cosf(angleRad) * velTot, sinf(angleRad) * velTot), 25, sf::Color(255,255,255,100), sf::seconds(8.0f)); // rand() % 50 + 25
-        smokeObject->getShapeReference().setTexture(&m_smokeTexture);
+        smokeObject->getShapeReference().setTexture(m_smokeTexture);
+        sf::Vector2u texture_size = m_smokeTexture.getSize();
+        smokeObject->getShapeReference().setOrigin(texture_size.x/2, texture_size.y/2);
         m_smokeObjects.push_back(smokeObject);
 
     }

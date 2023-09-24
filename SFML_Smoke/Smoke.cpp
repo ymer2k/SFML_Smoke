@@ -10,17 +10,18 @@ Smoke::Smoke(sf::Vector2f pos, sf::Vector2f vel, float radius, sf::Color color, 
 	, m_lifespanSeconds(lifespanSeconds)
 	, m_rotationalPositionDegrees(rand() % 360)
 	, m_rotationalVelocityDegrees(100.0f)
-	, m_scale(1,1)
+	, m_scale(0.2f,0.2f)
 	, m_scaleRate(1,1)
 
 {
 	m_shape.setPosition(m_pos);
-	m_shape.setRadius(m_radius);
-	m_shape.setOrigin(m_radius, m_radius);
-	m_shape.setFillColor(color);
+	//m_shape.setRadius(m_radius);
+	//m_shape.setPointCount(4);
+	//m_shape.setFillColor(color);
+	//m_shape.setOrigin(m_radius, m_radius);
+	m_shape.setColor(color);
 	m_mass = m_radius;
 	m_creationTime = sf::Clock();
-	m_shape.setPointCount(4);
 	m_shape.setRotation(m_rotationalPositionDegrees);
 }
 
@@ -108,12 +109,12 @@ bool Smoke::isExpired() {
 	return elapsedTime >= m_lifespanSeconds;
 }
 
-sf::CircleShape Smoke::getShape()
+sf::Sprite Smoke::getShape()
 {
 	return m_shape;
 }
 
-sf::CircleShape& Smoke::getShapeReference()
+sf::Sprite& Smoke::getShapeReference()
 {
 	return m_shape;
 }
@@ -125,7 +126,7 @@ float Smoke::getAlpha()
 
 void Smoke::setAlpha(float alpha)
 {
-	sf::Color fillColor = m_shape.getFillColor();
+	sf::Color fillColor = m_shape.getColor();
 	m_alpha = alpha;
-	m_shape.setFillColor(sf::Color(fillColor.r, fillColor.g, fillColor.b, m_alpha));
+	m_shape.setColor(sf::Color(fillColor.r, fillColor.g, fillColor.b, m_alpha));
 }
