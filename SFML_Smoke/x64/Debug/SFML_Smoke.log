@@ -1,0 +1,4 @@
+﻿  Game.cpp
+C:\Users\dr_sa\source\repos\SFML_Smoke\SFML_Smoke\Game.h(16,15): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dr_sa\source\repos\SFML_Smoke\SFML_Smoke\Game.cpp(66,26): warning C4305: '*=': truncation from 'double' to 'float'
+  SFML_Smoke.vcxproj -> C:\Users\dr_sa\source\repos\SFML_Smoke\x64\Debug\SFML_Smoke.exe
