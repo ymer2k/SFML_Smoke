@@ -37,7 +37,5 @@ private:
 
 	// methods
 	void updateBallVelAndPos(Smoke& smoke, sf::Time dt);
-	float clamp(float x, float lowerlimit = 0.0f, float upperlimit = 1.0f);
-	float smoothstep(float edge0, float edge1, float x);
 
 };

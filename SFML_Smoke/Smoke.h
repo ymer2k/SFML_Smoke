@@ -6,8 +6,6 @@ class Smoke
 public:
 
 	Smoke(sf::Vector2f pos = { 0.0f,0.0f }, sf::Vector2f vel = { 0,0 }, float radius = 0.0f, sf::Color color = { 0,0,0 }, sf::Time lifespanSeconds = sf::seconds(5));
-	Smoke(sf::Vector2f pos = { 0.0f,0.0f }, float vel = 0, float radius = 0.0f, sf::Color color = { 0,0,0 }, sf::Time lifespanSeconds = sf::seconds(5));
-
 	void setPos(sf::Vector2f pos);
 	sf::Vector2f getPos();
 	void setVel(sf::Vector2f vel);
@@ -53,5 +51,4 @@ private:
 	sf::Time m_lifespanSeconds;
 	sf::Clock m_creationTime;
 	float m_alpha;
-
 };
